@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>YourBus</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Compra de Tiquetes - YourBus</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Origen</th>
+        <th>Destino</th>
+        <th>Horario</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% routes.forEach((route) => { %>
+        <tr>
+          <td><%= route.origin %></td>
+          <td><%= route.destination %></td>
+          <td><%= route.time %></td>
+          <td>
+            <form action="/purchase" method="POST">
+              <input type="hidden" name="id" value="<%= route.id %>">
+              <button type="submit">Comprar</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>
